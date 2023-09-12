@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.8rem;
+        background-color: #cecece;
+        height: 100vh;
+        display: grid;
+        place-content: center;
+        width: 350px;
+        margin: auto;
+      }
+      .name {
+        font-family: cursive;
+        color: #3498db;
+      }
+
+      input {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border: 0;
+        background-color: transparent;
+        outline: 0;
+        border-bottom: 2px solid;
+        font-size: 1.2rem;
+      }
+    </style>
+    <title>What is your name?</title>
+  </head>
+  <body>
+    <h1>Hello, <span class="name"></span></h1>
+    <input type="text" placeholder="Enter Your name " />
+
+    <script>
+      const input = document.querySelector("input");
+      input.addEventListener("input", (e) => {
+        document.querySelector(".name").textContent = e.target.value;
+      });
+    </script>
+  </body>
+</html>
