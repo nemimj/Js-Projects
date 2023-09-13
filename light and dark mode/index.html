@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      body {
+        padding: 1rem;
+      }
+      .box {
+        background-color: aquamarine;
+        width: 80px;
+        height: 40px;
+        position: sticky;
+        top: 20px;
+        z-index: 100;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 1rem 3rem 0 auto;
+      }
+      .button {
+        cursor: pointer;
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0 1rem;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        position: relative;
+        left: 0;
+        transition: all 0.5s ease-in-out;
+      }
+      .on {
+        left: 30px;
+        background-color: orange;
+      }
+
+      .box.on {
+        background-color: #333;
+      }
+
+      .dark {
+        background-color: #333;
+        color: white;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      .content {
+        margin-top: 1rem;
+      }
+    </style>
+    <title>light and dark mode</title>
+  </head>
+  <body>
+    <div class="box">
+      <button class="button"></button>
+    </div>
+    <div class="content">
+      <h1>Light & Dark Mode</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque autem
+        doloremque doloribus fugiat! Iure harum amet dignissimos unde ab alias
+        animi at perferendis. Voluptates obcaecati asperiores quae quibusdam,
+        nostrum libero!
+      </p>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
