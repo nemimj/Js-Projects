@@ -23,12 +23,14 @@ body{
 Form
 */
 
-.form input{
+input{
     margin: 1rem 0;
     width: 100%;
     padding: 0.5rem;
     outline: 0;
 }
+
+
 
 .form .btn{
     background-color: #333;
@@ -41,3 +43,9 @@ Form
 }
 
 /* Filter */
+#filter{
+    border: transparent;
+    background-color: inherit;
+    border-bottom: 2px solid;
+    font-size: 1.1rem;
+}
