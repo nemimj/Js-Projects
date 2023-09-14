@@ -2,6 +2,8 @@ const form = document.querySelector("form");
 const itemInput = document.querySelector("#addItem");
 const itemList = document.querySelector(".items");
 const clearAll = document.querySelector(".clear-all");
+const items = itemList.querySelectorAll("li");
+const filter = document.querySelector(".filter");
 function addItem(e) {
   e.preventDefault();
   let newItem = itemInput.value;
@@ -19,6 +21,9 @@ function addItem(e) {
 
   itemList.appendChild(li);
   itemInput.value = "";
+
+  // added check ui
+  checkUI();
 }
 
 function createButton() {
@@ -39,12 +44,27 @@ function removeItem(e) {
   if (e.target.parentElement.classList.contains("remove")) {
     e.target.parentElement.parentElement.remove();
   }
+  checkUI();
 }
 
 function clearAllItems(e) {
   itemList.innerHTML = "";
+  checkUI();
+}
+
+function checkUI() {
+  const items = itemList.querySelectorAll("li");
+
+  if (items.length === 0) {
+    filter.style.display = "none";
+    clearAll.style.display = "none";
+  } else {
+    filter.style.display = "block";
+    clearAll.style.display = "block";
+  }
 }
 
 form.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
 clearAll.addEventListener("click", clearAllItems);
+checkUI();
