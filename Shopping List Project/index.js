@@ -3,7 +3,7 @@ const itemInput = document.querySelector("#addItem");
 const itemList = document.querySelector(".items");
 const clearAll = document.querySelector(".clear-all");
 const items = itemList.querySelectorAll("li");
-const filter = document.querySelector(".filter");
+const filter = document.querySelector("#filter");
 function addItem(e) {
   e.preventDefault();
   let newItem = itemInput.value;
@@ -64,7 +64,18 @@ function checkUI() {
   }
 }
 
+function filterItems(e) {
+  const items = itemList.querySelectorAll("li");
+  items.forEach((ele) => {
+    const value = ele.innerText.toLowerCase();
+    if (value.includes(filter.value.toLowerCase())) {
+      ele.style.display = "flex";
+    } else ele.style.display = "none";
+  });
+}
+
 form.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
 clearAll.addEventListener("click", clearAllItems);
+filter.addEventListener("input", filterItems);
 checkUI();
