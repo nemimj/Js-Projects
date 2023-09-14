@@ -1,0 +1,16 @@
+.container{
+    max-width: 350px;
+    margin: auto;
+    padding: 1rem;
+}
+
+#header img{
+    width: 80px;
+}
+
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
