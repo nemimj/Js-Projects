@@ -51,3 +51,30 @@ input{
 }
 
 /* Items  */
+.items .item button{
+    background:transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.items .item{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 1px solid #3333336b;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/* Clear All */
+.clear-all button{
+    width: 100%;
+    padding: 0.5rem;
+    outline: 0;
+    cursor: pointer;
+    background: #cecece;
+    border: 1px solid #0000004f;
+    font-weight: bold;
+}
