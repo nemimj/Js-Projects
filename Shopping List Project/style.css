@@ -65,7 +65,7 @@ input{
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 }
 
 /* Clear All */
