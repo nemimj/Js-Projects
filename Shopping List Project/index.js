@@ -23,6 +23,7 @@ function addItem(e) {
 
 function createButton() {
   const button = document.createElement("button");
+  button.classList.add("remove");
   const icon = createIcon("fa-solid fa-circle-xmark fa-2x");
   button.appendChild(icon);
   return button;
@@ -34,4 +35,11 @@ function createIcon(classes) {
   return icon;
 }
 
+function removeItem(e) {
+  if (e.target.parentElement.classList.contains("remove")) {
+    e.target.parentElement.parentElement.remove();
+  }
+}
+
 form.addEventListener("submit", addItem);
+itemList.addEventListener("click", removeItem);
