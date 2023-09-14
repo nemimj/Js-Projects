@@ -21,12 +21,12 @@
         <h1 class="heading">Shopping List</h1>
       </header>
 
-      <form class="form">
+      <form class="form" action="">
         <div class="form-contorl">
-          <input type="text" placeholder="Enter Item" />
+          <input type="text" placeholder="Enter Item" id="addItem" />
         </div>
         <div class="form-control">
-          <button class="btn">+Add Item</button>
+          <button class="btn" type="submit">+Add Item</button>
         </div>
       </form>
 
@@ -34,29 +34,11 @@
         <input type="text" id="filter" placeholder="Filter Items" />
       </div>
 
-      <ul class="items">
-        <li class="item">
-          Apples
-          <button>
-            <i
-              class="fa-solid fa-circle-xmark fa-2x"
-              style="color: #ea0628"
-            ></i>
-          </button>
-        </li>
-        <li class="item">
-          Oranges
-          <button>
-            <i
-              class="fa-solid fa-circle-xmark fa-2x"
-              style="color: #ea0628"
-            ></i>
-          </button>
-        </li>
-      </ul>
+      <ul class="items"></ul>
       <div class="clear-all">
         <button>Clear All</button>
       </div>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
