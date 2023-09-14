@@ -1,3 +1,7 @@
+body{
+    background-color: #cecece;
+}
+
 .container{
     max-width: 350px;
     margin: auto;
@@ -14,3 +18,26 @@
     justify-content: center;
     gap: 1rem;
 }
+
+/* 
+Form
+*/
+
+.form input{
+    margin: 1rem 0;
+    width: 100%;
+    padding: 0.5rem;
+    outline: 0;
+}
+
+.form .btn{
+    background-color: #333;
+    color: white;
+    padding: 0.5rem;
+    border: 0;
+    width: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Filter */
