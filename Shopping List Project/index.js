@@ -1,7 +1,7 @@
 const form = document.querySelector("form");
 const itemInput = document.querySelector("#addItem");
 const itemList = document.querySelector(".items");
-
+const clearAll = document.querySelector(".clear-all");
 function addItem(e) {
   e.preventDefault();
   let newItem = itemInput.value;
@@ -41,5 +41,10 @@ function removeItem(e) {
   }
 }
 
+function clearAllItems(e) {
+  itemList.innerHTML = "";
+}
+
 form.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
+clearAll.addEventListener("click", clearAllItems);
