@@ -19,6 +19,14 @@ function onAddItemSubmit(e) {
     alert("Please add an item");
     return;
   }
+
+  if (isEditMode) {
+    const itemTodEdit = itemList.querySelector(".edit-mode");
+    removeItemFromStorage(itemTodEdit.textContent);
+    itemTodEdit.remove();
+    isEditMode = false;
+  }
+
   addItemToDOM(newItem);
 
   //add items to localStorage
@@ -82,7 +90,17 @@ function onClickItem(e) {
 
 function setItemToEdit(item) {
   isEditMode = true;
-  item.style.color = "#333";
+  itemList
+    .querySelectorAll("li")
+    .forEach(
+      (i) => ((i.style.fontWeight = "bold"), i.classList.remove("edit-mode"))
+    );
+  item.style.fontWeight = "300";
+  item.classList.add("edit-mode");
+
+  btn.style.backgroundColor = "green";
+  btn.innerText = "Update Item";
+  itemInput.value = item.textContent;
 }
 
 function removeItem(item) {
