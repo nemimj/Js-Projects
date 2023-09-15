@@ -4,7 +4,8 @@ const itemList = document.querySelector(".items");
 const clearAll = document.querySelector(".clear-all");
 const items = itemList.querySelectorAll("li");
 const filter = document.querySelector("#filter");
-
+const btn = document.querySelector(".btn");
+let isEditMode = false;
 function displayItems() {
   const itemFromStorage = getItemFromStorage();
   itemFromStorage.forEach((item) => addItemToDOM(item));
@@ -74,7 +75,14 @@ function createIcon(classes) {
 function onClickItem(e) {
   if (e.target.parentElement.classList.contains("remove")) {
     removeItem(e.target.parentElement.parentElement);
+  } else {
+    setItemToEdit(e.target);
   }
+}
+
+function setItemToEdit(item) {
+  isEditMode = true;
+  item.style.color = "#333";
 }
 
 function removeItem(item) {
