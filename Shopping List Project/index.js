@@ -99,6 +99,8 @@ function removeItemFromStorage(item) {
 
 function clearAllItems(e) {
   itemList.innerHTML = "";
+
+  localStorage.removeItem("items");
   checkUI();
 }
 
