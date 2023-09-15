@@ -131,6 +131,7 @@ function clearAllItems(e) {
 }
 
 function checkUI() {
+  itemInput.value = "";
   const items = itemList.querySelectorAll("li");
 
   if (items.length === 0) {
@@ -140,6 +141,10 @@ function checkUI() {
     filter.style.display = "block";
     clearAll.style.display = "block";
   }
+
+  btn.innerText = "+ Add Item";
+  btn.style.backgroundColor = "#333";
+  isEditMode = false;
 }
 
 function filterItems(e) {
