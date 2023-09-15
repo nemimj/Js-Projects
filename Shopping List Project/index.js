@@ -25,6 +25,11 @@ function onAddItemSubmit(e) {
     removeItemFromStorage(itemTodEdit.textContent);
     itemTodEdit.remove();
     isEditMode = false;
+  } else {
+    if (checkDuplicateItem(newItem)) {
+      alert("Item Already Exists");
+      return;
+    }
   }
 
   addItemToDOM(newItem);
@@ -86,6 +91,11 @@ function onClickItem(e) {
   } else {
     setItemToEdit(e.target);
   }
+}
+
+function checkDuplicateItem(item) {
+  const itemsFromStorage = getItemFromStorage();
+  return itemsFromStorage.includes(item);
 }
 
 function setItemToEdit(item) {
