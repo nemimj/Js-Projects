@@ -5,6 +5,15 @@ const global = {
   currentPage: filename,
 };
 
+function hightlightActiveLink() {
+  const links = document.querySelectorAll(".nav-link");
+  links.forEach((link) => {
+    if (link.getAttribute("href") === global.currentPage) {
+      link.classList.add("active");
+    }
+  });
+}
+
 // Routers
 function init() {
   switch (global.currentPage) {
@@ -24,6 +33,8 @@ function init() {
       console.log("Search");
       break;
   }
+  hightlightActiveLink();
 }
 
+// runs on every page
 document.addEventListener("DOMContentLoaded", init);
