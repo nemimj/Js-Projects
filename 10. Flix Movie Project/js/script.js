@@ -11,7 +11,7 @@ async function displayPopularShows() {
     let div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-    <a href="movie-details.html?id=1">
+    <a href="movie-details.html?id=${show.id}">
      ${
        show.poster_path
          ? ` <img
@@ -44,7 +44,7 @@ async function displayPopularMovies() {
     let div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-    <a href="movie-details.html?id=1">
+    <a href="movie-details.html?id=${movie.id}">
      ${
        movie.poster_path
          ? ` <img
