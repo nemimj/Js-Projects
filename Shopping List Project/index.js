@@ -6,6 +6,9 @@ const items = itemList.querySelectorAll("li");
 const filter = document.querySelector("#filter");
 const btn = document.querySelector(".btn");
 let isEditMode = false;
+
+
+
 function displayItems() {
   const itemFromStorage = getItemFromStorage();
   itemFromStorage.forEach((item) => addItemToDOM(item));
