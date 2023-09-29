@@ -11,7 +11,7 @@ async function displayPopularShows() {
     let div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-    <a href="movie-details.html?id=${show.id}">
+    <a href="tv-details.html?id=${show.id}">
      ${
        show.poster_path
          ? ` <img
@@ -160,6 +160,74 @@ async function displayMovies() {
   document.querySelector("#movie-details").appendChild(div);
 }
 
+async function displayShows() {
+  // passing the value from one page to another page using link (127.0.0.1/movies.html&id=1234)
+  const movieId = window.location.search.split("=");
+
+  const show = await fetchAPIData(`tv/${movieId[1]}`);
+  displayBackgroundImage("show", show.backdrop_path);
+
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <div class="details-top">
+  <div>
+  ${
+    show.poster_path
+      ? `<img
+    src="https://image.tmdb.org/t/p/w500${show.poster_path}"
+    class="card-img-top"
+    alt="${show.title}"
+  />`
+      : `<img
+  src="../images/no-image.jpg"
+  class="card-img-top"
+  alt="${show.title}"
+/>`
+  }
+  </div>
+  <div>
+    <h2>${show.name}</h2>
+    <p>
+      <i class="fas fa-star text-primary"></i>
+      
+      ${show.vote_average.toFixed(1)} / 10
+    </p>
+    <p class="text-muted">Release Date: ${show.last_air_date}</p>
+    <p>
+      ${show.overview}
+    </p>
+    <h5>Genres</h5>
+    <ul class="list-group">
+      ${show.genres.map((genre) => `<li>${genre.name}</li>`).join("")}
+    </ul>
+    <a href="${
+      show.homepage
+    }" target="_blank" class="btn">Visit Movie Homepage</a>
+  </div>
+</div>
+<div class="details-bottom">
+  <h2>Movie Info</h2>
+  <ul>
+    <li><span class="text-secondary">No Of Episodes:</span> ${
+      show.number_of_episodes
+    }</li>
+    <li><span class="text-secondary">Last Episode To Air:</span> ${
+      show.last_episode_to_air
+    }</li>
+   
+    <li><span class="text-secondary">Status:</span> ${show.status}</li>
+  </ul>
+  <h4>Production Companies</h4>
+  <div class="list-group">
+    ${show.production_companies
+      .map((company) => `<span>${company.name}</span>`)
+      .join(", ")}
+  </div>
+</div>
+  `;
+  document.querySelector("#show-details").appendChild(div);
+}
+
 function displayBackgroundImage(type, backgroundPath) {
   const overlayDiv = document.createElement("div");
 
@@ -214,7 +282,7 @@ function init() {
       break;
     case "tv-details.html":
       console.log("Tv Details");
-
+      displayShows();
       break;
     case "search.html":
       console.log("Search");
