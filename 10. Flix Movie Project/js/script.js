@@ -3,6 +3,12 @@ const filename = pathArray[pathArray.length - 1];
 
 const global = {
   currentPage: filename,
+  search: {
+    term: "",
+    type: "",
+    page: 1,
+    totalPages: 1,
+  },
 };
 
 async function displayPopularShows() {
@@ -247,6 +253,7 @@ async function displaySlider() {
   });
 }
 
+// swiper
 function initSwiper() {
   const swiper = new Swiper(".swiper", {
     slidesPerView: 1,
@@ -269,6 +276,17 @@ function initSwiper() {
       },
     },
   });
+}
+
+// search
+
+async function search() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  global.search.type = urlParams.get("type");
+  global.search.term = urlParams.get("search-term");
+  global.search.page = urlParams.get("");
 }
 
 // display background Image
@@ -331,6 +349,7 @@ function init() {
       break;
     case "search.html":
       console.log("Search");
+      search();
       break;
   }
   hightlightActiveLink();
