@@ -288,9 +288,24 @@ async function search() {
   global.search.term = urlParams.get("search-term");
 
   if (global.search.term !== "" && global.search.term !== null) {
+    const { results } = await searchAPIData();
+    console.log(results);
   } else {
     showAlert("Please enter a search term");
   }
+}
+
+// search for a term using api
+async function searchAPIData() {
+  showSpinner();
+  const response = await fetch(
+    `https://api.themoviedb.org/3/search/${global.search.type}?query=${global.search.term}&api_key=4c3b7a975301fb951443d3ae9944e6ff&`
+  );
+
+  const data = await response.json();
+  hideSpinner();
+
+  return data;
 }
 
 // show Alert
