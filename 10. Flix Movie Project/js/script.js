@@ -286,7 +286,20 @@ async function search() {
 
   global.search.type = urlParams.get("type");
   global.search.term = urlParams.get("search-term");
-  global.search.page = urlParams.get("");
+
+  if (global.search.term !== "" && global.search.term !== null) {
+  } else {
+    showAlert("Please enter a search term");
+  }
+}
+
+// show Alert
+
+function showAlert(message, className) {
+  const alertEl = document.createElement("div");
+  alertEl.classList.add("alert", className);
+  alertEl.appendChild(document.createTextNode(message));
+  document.querySelector("#alert").appendChild(alertEl);
 }
 
 // display background Image
