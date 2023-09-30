@@ -8,6 +8,7 @@ const global = {
     type: "",
     page: 1,
     totalPages: 1,
+    totalResults: 1,
   },
 };
 
@@ -288,7 +289,11 @@ async function search() {
   global.search.term = urlParams.get("search-term");
 
   if (global.search.term !== "" && global.search.term !== null) {
-    const { results, total_pages, page } = await searchAPIData();
+    const { results, total_pages, page, total_results } = await searchAPIData();
+
+    global.search.totalPages = total_pages;
+    global.search.page = page;
+    global.search.totalResults = total_results;
 
     if (results.length === 0) {
       showAlert("No Results Found");
