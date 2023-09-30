@@ -346,6 +346,19 @@ function displaySearchResults(results) {
 
     document.querySelector("#search-results").appendChild(div);
   });
+
+  displayPagination();
+}
+
+// previous and next page results
+
+function displayPagination() {
+  const div = document.createElement("div");
+  div.classList.add("pagination");
+  div.innerHTML = `
+  <button class="btn btn-primary" id="prev">Prev</button>
+  <button class="btn btn-primary" id="next">Next</button>
+  <div class="page-counter">Page ${global.search.page} of ${global.search.totalPages}</div>`;
 }
 
 // search for a term using api
