@@ -308,6 +308,11 @@ async function search() {
 }
 
 function displaySearchResults(results) {
+  // Clear previous results
+  document.querySelector("#search-results").innerHTML = "";
+  document.querySelector("#search-results-heading").innerHTML = "";
+  document.querySelector("#pagination").innerHTML = "";
+
   results.forEach((result) => {
     let div = document.createElement("div");
     div.classList.add("card");
@@ -375,6 +380,14 @@ function displayPagination() {
   document.querySelector("#next").addEventListener("click", async () => {
     global.search.page++;
     const { results, total_pages } = await searchAPIData();
+
+    displaySearchResults(results);
+  });
+
+  document.querySelector("#prev").addEventListener("click", async () => {
+    global.search.page--;
+    const { results, total_pages } = await searchAPIData();
+
     displaySearchResults(results);
   });
 }
@@ -383,12 +396,11 @@ function displayPagination() {
 async function searchAPIData() {
   showSpinner();
   const response = await fetch(
-    `https://api.themoviedb.org/3/search/${global.search.type}?query=${global.search.term}&api_key=4c3b7a975301fb951443d3ae9944e6ff&${global.search.page}`
+    `https://api.themoviedb.org/3/search/${global.search.type}?query=${global.search.term}&api_key=4c3b7a975301fb951443d3ae9944e6ff&page=${global.search.page}`
   );
 
   const data = await response.json();
   hideSpinner();
-
   return data;
 }
 
